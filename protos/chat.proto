@@ -1,0 +1,31 @@
+// write proto for chat service
+syntax = "proto3";
+option go_package = "./protos";
+
+package chat;
+
+service ChatService {
+  rpc JoinRoom (JoinChatRoomRequest) returns ( JoinRoomResponse) {}
+  rpc SendMessage (ChatRequest) returns (ChatMessage) {}
+}
+
+message JoinChatRoomRequest {
+  string user_id = 1;
+  string room_id = 2;
+}
+
+message ChatMessage {
+  string user_id = 1;
+  string message = 2;
+}
+
+message ChatRequest {
+  string user_id = 1;
+  string room_id = 2;
+  string message = 3;
+}
+
+message JoinRoomResponse {
+  bool success = 1;
+  string message = 2;
+}
