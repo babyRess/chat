@@ -1,0 +1,34 @@
+syntax = "proto3";
+package chat;
+option go_package = "./protos";
+
+service ChatService {
+  rpc SendMessage (ChatMessage) returns (ChatResponse);
+  rpc JoinRoom (JoinRoomRequest) returns (JoinRoomResponse);
+}
+
+message ChatMessage {
+  string userName = 1;
+  string message = 2;
+  string room_id = 3;  
+}
+
+message Response {
+  bool success = 1;
+  string message = 2;
+}
+
+message ChatResponse {
+  Response response = 1;
+}
+
+message JoinRoomRequest {
+  string userName = 1;
+  string room_id = 2; 
+}
+
+message JoinRoomResponse {
+  Response response = 1;
+}
+
+
